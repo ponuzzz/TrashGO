@@ -39,7 +39,7 @@ exports.getDashboard = async (req, res) => {
     res.status(500).json(err.message);
   }
 };
-const Agent = require("../models/Agent");
+
 
 // exports.getAgents = async (req, res) => {
 
