@@ -1,0 +1,163 @@
+/* ================= MAIN LAYOUT ================= */
+
+.agent-container{
+  display: flex;
+  min-height: 100vh;
+  background: #f4f7fb;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ================= SIDEBAR ================= */
+
+.agent-sidebar{
+  width: 270px;
+  background: linear-gradient(
+    180deg,
+    #0f172a,
+    #1e293b
+  );
+
+  color: white;
+
+  padding: 30px 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+/* TITLE */
+
+.agent-sidebar h2{
+  font-size: 28px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 700;
+  color: #22c55e;
+
+  letter-spacing: 1px;
+}
+
+/* ================= LINKS ================= */
+
+.agent-sidebar a{
+  text-decoration: none;
+  color: #e2e8f0;
+
+  padding: 15px 18px;
+  margin-bottom: 14px;
+
+  border-radius: 14px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  transition: 0.3s;
+}
+
+/* HOVER */
+
+.agent-sidebar a:hover{
+  background: rgba(255,255,255,0.08);
+
+  transform: translateX(5px);
+
+  color: #22c55e;
+}
+
+/* ACTIVE EFFECT */
+
+.agent-sidebar a.active{
+  background: #22c55e;
+  color: white;
+}
+
+/* ================= LOGOUT ================= */
+
+.logout-btn{
+  margin-top: auto;
+
+  background: linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+
+  border: none;
+
+  color: white;
+
+  padding: 14px;
+
+  border-radius: 14px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.logout-btn:hover{
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 20px rgba(239,68,68,0.3);
+}
+
+/* ================= CONTENT ================= */
+
+.agent-content{
+  flex: 1;
+
+  padding: 35px;
+
+  overflow-y: auto;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width: 900px){
+
+  .agent-container{
+    flex-direction: column;
+  }
+
+  .agent-sidebar{
+    width: 100%;
+    height: auto;
+
+    position: relative;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+  }
+
+  .agent-sidebar h2{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .agent-sidebar a{
+    margin-bottom: 0;
+  }
+
+  .logout-btn{
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .agent-content{
+    padding: 20px;
+  }
+
+}

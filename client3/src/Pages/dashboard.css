@@ -1,0 +1,29 @@
+.main {
+  margin-left: 240px;
+  padding: 20px;
+  background: #f5f7fa;
+}
+
+.hero-section {
+  height: 80vh;
+  background: url("https://img.freepik.com/free-vector/people-recycling-concept_23-2148521428.jpg") center/cover no-repeat;
+}
+
+.waste-card {
+  transition: 0.3s;
+  border-radius: 15px;
+}
+
+.waste-card:hover {
+  transform: scale(1.05);
+}
+
+.eco-section {
+  background: linear-gradient(to right, #28a745, #20c997);
+}
+
+.footer {
+  background: #111;
+  color: white;
+  padding: 20px;
+}

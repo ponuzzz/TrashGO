@@ -1,0 +1,430 @@
+/* ================= PAGE ================= */
+
+.agent-requests-page{
+
+  width: 100%;
+
+  padding: 20px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #f0fdf4,
+      #f8fafc
+    );
+
+  min-height: 100vh;
+}
+
+/* ================= HEADER ================= */
+
+.agent-request-header{
+
+  background:
+    linear-gradient(
+      135deg,
+      #dcfce7,
+      #f0fdf4
+    );
+
+  padding: 40px;
+
+  border-radius: 30px;
+
+  margin-bottom: 35px;
+
+  border: 1px solid #bbf7d0;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.05);
+}
+
+.agent-request-header h1{
+
+  font-size: 40px;
+
+  color: #166534;
+
+  margin-bottom: 14px;
+
+  font-weight: 700;
+}
+
+.agent-request-header p{
+
+  color: #15803d;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+
+  max-width: 700px;
+}
+
+/* ================= EMPTY ================= */
+
+.empty-request-box{
+
+  background: white;
+
+  border-radius: 24px;
+
+  padding: 50px;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.05);
+}
+
+.empty-request-box h2{
+
+  color: #0f172a;
+
+  margin-bottom: 10px;
+}
+
+.empty-request-box p{
+
+  color: #64748b;
+}
+
+/* ================= GRID ================= */
+
+.request-grid{
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(350px,1fr));
+
+  gap: 30px;
+}
+
+/* ================= CARD ================= */
+
+.request-card{
+
+  background: white;
+
+  border-radius: 28px;
+
+  padding: 28px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.05);
+
+  transition: 0.3s;
+}
+
+.request-card:hover{
+
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* TOP BORDER */
+
+.request-card::before{
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 7px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #22c55e,
+      #16a34a
+    );
+}
+
+/* ================= TOP ================= */
+
+.request-top{
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  margin-bottom: 25px;
+}
+
+.request-top h2{
+
+  color: #0f172a;
+
+  font-size: 24px;
+
+  margin-bottom: 8px;
+}
+
+.request-location{
+
+  color: #64748b;
+
+  font-size: 15px;
+}
+
+/* ================= STATUS ================= */
+
+.status-badge{
+
+  padding: 10px 18px;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.status-badge.approved{
+
+  background: #dbeafe;
+
+  color: #2563eb;
+}
+
+.status-badge.collected{
+
+  background: #fef9c3;
+
+  color: #ca8a04;
+}
+
+.status-badge.completed{
+
+  background: #dcfce7;
+
+  color: #16a34a;
+}
+
+/* ================= DETAILS ================= */
+
+.details-grid{
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+.detail-box{
+
+  background: #f8fafc;
+
+  padding: 18px;
+
+  border-radius: 18px;
+
+  transition: 0.3s;
+}
+
+.detail-box:hover{
+
+  background: #f0fdf4;
+}
+
+.detail-box span{
+
+  display: block;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  margin-bottom: 8px;
+}
+
+.detail-box h4{
+
+  color: #0f172a;
+
+  font-size: 17px;
+
+  margin: 0;
+}
+
+/* ================= ADDRESS ================= */
+
+.address-box{
+
+  background: #f0fdf4;
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  margin-bottom: 22px;
+
+  border: 1px solid #dcfce7;
+}
+
+.address-box h3{
+
+  color: #166534;
+
+  margin-bottom: 10px;
+
+  font-size: 18px;
+}
+
+.address-box p{
+
+  color: #334155;
+
+  line-height: 1.6;
+}
+
+/* ================= PICKUP INFO ================= */
+
+.pickup-info{
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap: 16px;
+
+  margin-bottom: 25px;
+}
+
+.pickup-item{
+
+  background: #f8fafc;
+
+  padding: 18px;
+
+  border-radius: 18px;
+}
+
+.pickup-item span{
+
+  display: block;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  margin-bottom: 8px;
+}
+
+.pickup-item h4{
+
+  color: #0f172a;
+
+  margin: 0;
+}
+
+/* ================= BUTTONS ================= */
+
+.button-area{
+
+  margin-top: 10px;
+}
+
+.collect-btn,
+.done-btn,
+.completed-btn{
+
+  width: 100%;
+
+  border: none;
+
+  padding: 15px;
+
+  border-radius: 16px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.collect-btn{
+
+  background:
+    linear-gradient(
+      135deg,
+      #16a34a,
+      #22c55e
+    );
+
+  color: white;
+}
+
+.collect-btn:hover{
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 25px rgba(34,197,94,0.25);
+}
+
+.done-btn{
+
+  background: #e2e8f0;
+
+  color: #475569;
+
+  cursor: not-allowed;
+}
+
+.completed-btn{
+
+  background: #dcfce7;
+
+  color: #166534;
+
+  cursor: not-allowed;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+  .agent-request-header{
+
+    padding: 30px 20px;
+  }
+
+  .agent-request-header h1{
+
+    font-size: 30px;
+  }
+
+  .details-grid,
+  .pickup-info{
+
+    grid-template-columns: 1fr;
+  }
+
+  .request-grid{
+
+    grid-template-columns: 1fr;
+  }
+
+}

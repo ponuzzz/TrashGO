@@ -1,0 +1,568 @@
+/* PAGE */
+
+.history-page{
+
+  min-height: 100vh;
+
+  padding: 28px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #f0fdf4,
+    #f8fafc
+  );
+}
+
+/* HERO */
+
+.hero-section{
+
+  background:
+  linear-gradient(
+    135deg,
+    #ecfdf5,
+    #dcfce7
+  );
+
+  border-radius: 35px;
+
+  padding: 45px;
+
+  margin-bottom: 35px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border: 1px solid #bbf7d0;
+
+  box-shadow:
+  0 15px 35px rgba(34,197,94,0.08);
+}
+
+.hero-content{
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.hero-tag{
+
+  background: white;
+
+  color: #166534;
+
+  padding: 10px 18px;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  display: inline-block;
+
+  margin-bottom: 20px;
+}
+
+.hero-section h1{
+
+  font-size: 50px;
+
+  color: #166534;
+
+  margin-bottom: 16px;
+
+  font-weight: 700;
+}
+
+.hero-section p{
+
+  color: #15803d;
+
+  max-width: 700px;
+
+  line-height: 1.8;
+
+  font-size: 17px;
+}
+
+.hero-circle{
+
+  width: 130px;
+
+  height: 130px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.5);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 60px;
+
+  backdrop-filter: blur(10px);
+}
+
+/* STATS */
+
+.stats-grid{
+
+  display: grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
+  gap: 24px;
+
+  margin-bottom: 35px;
+}
+
+.stats-card{
+
+  border-radius: 30px;
+
+  padding: 35px;
+
+  color: white;
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition: 0.3s;
+
+  box-shadow:
+  0 12px 30px rgba(0,0,0,0.08);
+}
+
+.stats-card:hover{
+
+  transform: translateY(-6px);
+}
+
+.green{
+
+  background:
+  linear-gradient(
+    135deg,
+    #16a34a,
+    #22c55e
+  );
+}
+
+.orange{
+
+  background:
+  linear-gradient(
+    135deg,
+    #f59e0b,
+    #fbbf24
+  );
+}
+
+.blue{
+
+  background:
+  linear-gradient(
+    135deg,
+    #0ea5e9,
+    #38bdf8
+  );
+}
+
+.purple{
+
+  background:
+  linear-gradient(
+    135deg,
+    #7c3aed,
+    #a855f7
+  );
+}
+
+.stats-icon{
+
+  font-size: 28px;
+
+  margin-bottom: 18px;
+}
+
+.stats-card h1{
+
+  font-size: 42px;
+
+  margin-bottom: 10px;
+}
+
+.stats-card p{
+
+  opacity: 0.9;
+
+  font-size: 16px;
+}
+
+/* ANALYTICS */
+
+.analytics-grid{
+
+  display: grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(350px,1fr));
+
+  gap: 25px;
+
+  margin-bottom: 35px;
+}
+
+.analytics-card{
+
+  background: white;
+
+  border-radius: 35px;
+
+  padding: 30px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  box-shadow:
+  0 12px 30px rgba(0,0,0,0.06);
+}
+
+.card-header{
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.card-header span{
+
+  background: #dcfce7;
+
+  color: #166534;
+
+  padding: 8px 16px;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+}
+
+/* RADIAL */
+
+.radial-chart{
+
+  position: relative;
+
+  height: 280px;
+}
+
+.chart-text{
+
+  position: absolute;
+
+  top: 55%;
+  left: 50%;
+
+  transform:
+  translate(-50%,-50%);
+
+  text-align: center;
+}
+
+.chart-text h1{
+
+  font-size: 42px;
+
+  color: #16a34a;
+}
+
+.chart-text p{
+
+  color: #64748b;
+}
+
+/* DISTRICT */
+
+.district-card{
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.district-top{
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.district-top span{
+
+  color: #16a34a;
+
+  font-weight: 600;
+}
+
+.district-top h1{
+
+  font-size: 50px;
+
+  color: #166534;
+
+  margin-top: 10px;
+}
+
+.district-badge{
+
+  background:
+  linear-gradient(
+    135deg,
+    #16a34a,
+    #22c55e
+  );
+
+  color: white;
+
+  padding: 15px 20px;
+
+  border-radius: 20px;
+
+  font-weight: 600;
+}
+
+.district-card p{
+
+  color: #64748b;
+
+  line-height: 1.7;
+
+  margin-bottom: 25px;
+}
+
+.district-progress{
+
+  width: 100%;
+
+  height: 14px;
+
+  background: #ecfdf5;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.progress-fill{
+
+  width: 85%;
+
+  height: 100%;
+
+  background:
+  linear-gradient(
+    90deg,
+    #16a34a,
+    #22c55e
+  );
+}
+
+/* CHART */
+
+.chart-section{
+
+  background: white;
+
+  border-radius: 35px;
+
+  padding: 35px;
+
+  margin-bottom: 35px;
+
+  box-shadow:
+  0 12px 30px rgba(0,0,0,0.06);
+}
+
+.chart-header{
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.chart-header h2{
+
+  color: #166534;
+
+  margin-bottom: 10px;
+}
+
+.chart-header p{
+
+  color: #64748b;
+}
+
+.week-badge{
+
+  background: #dcfce7;
+
+  color: #166534;
+
+  padding: 10px 18px;
+
+  border-radius: 30px;
+
+  font-weight: 600;
+}
+
+/* WEEKLY */
+
+.weekly-grid{
+
+  display: grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(250px,1fr));
+
+  gap: 25px;
+}
+
+.weekly-card{
+
+  background: white;
+
+  border-radius: 30px;
+
+  padding: 30px;
+
+  box-shadow:
+  0 12px 30px rgba(0,0,0,0.06);
+
+  transition: 0.3s;
+}
+
+.weekly-card:hover{
+
+  transform: translateY(-6px);
+}
+
+.weekly-card h3{
+
+  color: #166534;
+
+  margin-bottom: 18px;
+}
+
+.weekly-card h1{
+
+  font-size: 42px;
+
+  color: #16a34a;
+
+  margin-bottom: 14px;
+}
+
+.weekly-card p{
+
+  color: #64748b;
+
+  line-height: 1.7;
+}
+
+/* EMPTY */
+
+.empty-box{
+
+  background: white;
+
+  padding: 60px;
+
+  margin-top: 35px;
+
+  border-radius: 30px;
+
+  text-align: center;
+
+  box-shadow:
+  0 12px 30px rgba(0,0,0,0.06);
+}
+
+.empty-box h2{
+
+  color: #0f172a;
+
+  margin-bottom: 12px;
+}
+
+.empty-box p{
+
+  color: #64748b;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .hero-content{
+
+    flex-direction: column;
+
+    gap: 30px;
+
+    align-items: flex-start;
+  }
+
+  .hero-section{
+
+    padding: 30px 22px;
+  }
+
+  .hero-section h1{
+
+    font-size: 34px;
+  }
+
+  .district-top{
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+  .chart-header{
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+}

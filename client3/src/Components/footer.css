@@ -1,0 +1,262 @@
+/* =========================
+   MAIN FOOTER
+========================= */
+
+.footer-section{
+  background:linear-gradient(135deg,#0f766e,#14b8a6,#22c55e);
+  padding-top:70px;
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+
+.footer-section::before{
+  content:"";
+  position:absolute;
+  width:400px;
+  height:400px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.05);
+  top:-150px;
+  right:-120px;
+}
+
+.footer-section::after{
+  content:"";
+  position:absolute;
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.05);
+  bottom:-120px;
+  left:-80px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.footer-container{
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1.2fr;
+  gap:60px;
+  padding:0 40px 60px;
+  position:relative;
+  z-index:2;
+}
+
+/* =========================
+   BRAND SECTION
+========================= */
+
+.footer-brand h2{
+  font-size:2.4rem;
+  font-weight:800;
+  margin-top:18px;
+  margin-bottom:18px;
+}
+
+.footer-brand p{
+  line-height:1.9;
+  font-size:1rem;
+  color:#e2fdf7;
+  max-width:380px;
+}
+
+.footer-logo-area{
+  position:relative;
+  width:90px;
+  height:90px;
+}
+
+.footer-main-logo{
+  width:90px;
+  height:90px;
+  border-radius:25px;
+  background:white;
+  color:#0f766e;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:2.8rem;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.footer-small-logo{
+  position:absolute;
+  bottom:-5px;
+  right:-5px;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  background:#facc15;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:1rem;
+  color:black;
+  border:3px solid white;
+  animation:footerPulse 2s infinite;
+}
+
+@keyframes footerPulse{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.15);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+/* =========================
+   SOCIAL
+========================= */
+
+.social-icons{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+}
+
+.social-icons span{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.15);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:1.2rem;
+  cursor:pointer;
+  transition:0.3s;
+  backdrop-filter:blur(10px);
+}
+
+.social-icons span:hover{
+  transform:translateY(-5px);
+  background:white;
+  color:#0f766e;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.footer-links h3,
+.footer-contact h3{
+  font-size:1.7rem;
+  margin-bottom:25px;
+  font-weight:700;
+}
+
+.footer-links{
+  display:flex;
+  flex-direction:column;
+}
+
+.footer-links a{
+  text-decoration:none;
+  color:white;
+  margin-bottom:15px;
+  transition:0.3s;
+  width:fit-content;
+  font-weight:500;
+}
+
+.footer-links a:hover{
+  transform:translateX(8px);
+  color:#d9f99d;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.footer-contact p{
+  line-height:1.8;
+  color:#e2fdf7;
+}
+
+.mission-box{
+  margin-top:25px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.mission-item{
+  background:rgba(255,255,255,0.12);
+  padding:16px 20px;
+  border-radius:14px;
+  backdrop-filter:blur(10px);
+  font-weight:600;
+  transition:0.3s;
+}
+
+.mission-item:hover{
+  transform:translateX(8px);
+  background:rgba(255,255,255,0.2);
+}
+
+/* =========================
+   BOTTOM
+========================= */
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.15);
+  text-align:center;
+  padding:22px;
+  position:relative;
+  z-index:2;
+}
+
+.footer-bottom p{
+  margin:0;
+  color:#ecfeff;
+  font-weight:500;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+  .footer-container{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .footer-container{
+    padding:0 20px 50px;
+  }
+
+  .footer-brand h2{
+    font-size:2rem;
+  }
+
+  .footer-links h3,
+  .footer-contact h3{
+    font-size:1.5rem;
+  }
+
+  .footer-main-logo{
+    width:75px;
+    height:75px;
+    font-size:2.2rem;
+  }
+
+}

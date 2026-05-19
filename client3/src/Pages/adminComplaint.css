@@ -1,0 +1,82 @@
+.admin-page {
+  margin-left: 230px;
+  padding: 20px;
+  background: #f4f7fb;
+}
+
+.admin-card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.admin-card:hover {
+  transform: translateY(-3px);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* STATUS */
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.status.Pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.Replied {
+  background: #d4edda;
+  color: green;
+}
+
+.msg {
+  margin: 10px 0;
+}
+
+.reply-done {
+  background: #e6ffed;
+  padding: 10px;
+  border-left: 4px solid green;
+  border-radius: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  margin-top: 10px;
+  background: #2ecc71;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+button.danger {
+  background: #f39c12;
+}
+
+button.delete {
+  background: #e74c3c;
+}

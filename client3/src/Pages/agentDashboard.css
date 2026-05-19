@@ -1,0 +1,409 @@
+
+
+/* ================= PAGE ================= */
+
+.agent-dashboard{
+  width: 100%;
+  padding: 10px;
+}
+
+/* ================= HERO ================= */
+
+.dashboard-hero{
+
+  background: linear-gradient(
+    135deg,
+    #dcfce7,
+    #f0fdf4
+  );
+
+  border-radius: 28px;
+
+  padding: 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 35px;
+
+  border: 1px solid #bbf7d0;
+}
+
+.dashboard-hero h1{
+
+  font-size: 42px;
+  color: #166534;
+
+  margin-bottom: 12px;
+}
+
+.dashboard-hero p{
+
+  color: #15803d;
+
+  font-size: 17px;
+
+  max-width: 650px;
+
+  line-height: 1.7;
+}
+
+.hero-icon{
+
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 50px;
+
+  color: #16a34a;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ================= GRID ================= */
+
+.dashboard-grid{
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+  gap: 25px;
+
+  margin-bottom: 35px;
+}
+
+/* ================= CARD ================= */
+
+.dashboard-card{
+
+  background: white;
+
+  border-radius: 24px;
+
+  padding: 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  transition: 0.3s;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.dashboard-card:hover{
+
+  transform: translateY(-8px);
+
+  box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+}
+
+.dashboard-card h4{
+
+  color: #64748b;
+
+  margin-bottom: 8px;
+
+  font-size: 17px;
+}
+
+.dashboard-card h1{
+
+  color: #0f172a;
+
+  font-size: 38px;
+}
+
+/* ================= ICON ================= */
+
+.card-icon{
+
+  width: 70px;
+  height: 70px;
+
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 28px;
+}
+
+.assigned{
+  background: #fef9c3;
+  color: #ca8a04;
+}
+
+.collected{
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.completed{
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.earnings{
+  background: #fae8ff;
+  color: #a21caf;
+}
+
+/* ================= MIDDLE ================= */
+
+.middle-layout{
+
+  display: grid;
+
+  grid-template-columns:
+    2fr 1fr;
+
+  gap: 25px;
+
+  margin-bottom: 35px;
+}
+
+/* ================= CHART ================= */
+
+.chart-section{
+
+  background: white;
+
+  border-radius: 28px;
+
+  padding: 30px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* ================= ECO BOX ================= */
+
+.eco-box{
+
+  background: linear-gradient(
+    135deg,
+    #f0fdf4,
+    #dcfce7
+  );
+
+  border-radius: 28px;
+
+  padding: 30px;
+
+  border: 1px solid #bbf7d0;
+}
+
+.eco-box h2{
+
+  margin-bottom: 25px;
+
+  color: #166534;
+}
+
+.eco-item{
+
+  display: flex;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+
+  background: white;
+
+  padding: 18px;
+
+  border-radius: 18px;
+
+  align-items: center;
+}
+
+.eco-item svg{
+
+  color: #16a34a;
+
+  font-size: 22px;
+}
+
+.eco-item p{
+
+  color: #334155;
+
+  line-height: 1.6;
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section-title{
+
+  margin-bottom: 25px;
+}
+
+.section-title h2{
+
+  color: #0f172a;
+}
+
+/* ================= COMPLETED SECTION ================= */
+
+.recent-section{
+
+  background: white;
+
+  border-radius: 28px;
+
+  padding: 30px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* ================= RECENT CARD ================= */
+
+.recent-card{
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 22px;
+
+  border-radius: 22px;
+
+  background: #f8fafc;
+
+  margin-bottom: 18px;
+
+  transition: 0.3s;
+}
+
+.recent-card:hover{
+
+  background: #f0fdf4;
+
+  transform: translateY(-4px);
+}
+
+.recent-left h3{
+
+  margin-bottom: 10px;
+
+  color: #0f172a;
+}
+
+.recent-left p{
+
+  margin-bottom: 8px;
+
+  color: #64748b;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.recent-right{
+
+  text-align: right;
+}
+
+.recent-right h4{
+
+  margin-top: 12px;
+
+  color: #16a34a;
+}
+
+/* ================= STATUS ================= */
+
+.status{
+
+  padding: 8px 18px;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.status.completed{
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* ================= EMPTY ================= */
+
+.empty-box{
+
+  text-align: center;
+
+  padding: 40px;
+
+  background: #f8fafc;
+
+  border-radius: 20px;
+
+  color: #64748b;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:992px){
+
+  .middle-layout{
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .dashboard-hero{
+
+    flex-direction: column;
+
+    gap: 25px;
+
+    text-align: center;
+  }
+
+  .dashboard-hero h1{
+
+    font-size: 30px;
+  }
+
+  .hero-icon{
+
+    width: 90px;
+    height: 90px;
+
+    font-size: 40px;
+  }
+
+  .recent-card{
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .recent-right{
+
+    text-align: left;
+  }
+
+}

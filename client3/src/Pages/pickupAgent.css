@@ -1,0 +1,418 @@
+/* ================= PAGE ================= */
+
+.pickup-page {
+
+  padding: 30px;
+
+  min-height: 100vh;
+
+  background:
+  linear-gradient(
+    to bottom,
+    #f0fdf4,
+    #f8fafc
+  );
+}
+
+/* ================= HERO ================= */
+
+.pickup-hero {
+
+  background:
+  linear-gradient(
+    135deg,
+    #dcfce7,
+    #f0fdf4
+  );
+
+  border-radius: 30px;
+
+  padding: 40px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 30px;
+
+  border: 1px solid #bbf7d0;
+}
+
+.pickup-hero h1 {
+
+  font-size: 42px;
+
+  color: #166534;
+
+  margin-bottom: 12px;
+}
+
+.pickup-hero p {
+
+  color: #15803d;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+
+  max-width: 650px;
+}
+
+/* ================= HERO ICON ================= */
+
+.hero-circle {
+
+  width: 110px;
+
+  height: 110px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 45px;
+
+  color: #16a34a;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ================= TOPBAR ================= */
+
+.pickup-topbar {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 30px;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+/* SEARCH */
+
+.search-box {
+
+  background: white;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 15px 20px;
+
+  border-radius: 18px;
+
+  width: 350px;
+
+  box-shadow:
+  0 6px 20px rgba(0,0,0,0.05);
+}
+
+.search-box svg {
+
+  color: #16a34a;
+}
+
+.search-box input {
+
+  border: none;
+
+  outline: none;
+
+  width: 100%;
+
+  font-size: 15px;
+
+  background: transparent;
+}
+
+/* COUNT */
+
+.agent-count {
+
+  background: white;
+
+  padding: 15px 22px;
+
+  border-radius: 18px;
+
+  font-weight: 600;
+
+  color: #334155;
+
+  box-shadow:
+  0 6px 20px rgba(0,0,0,0.05);
+}
+
+.agent-count span {
+
+  color: #16a34a;
+
+  font-size: 20px;
+}
+
+/* ================= GRID ================= */
+
+.pickup-grid {
+
+  display: grid;
+
+  grid-template-columns:
+  repeat(auto-fit, minmax(340px, 1fr));
+
+  gap: 25px;
+}
+
+/* ================= CARD ================= */
+
+.pickup-card {
+
+  background: white;
+
+  border-radius: 28px;
+
+  padding: 28px;
+
+  transition: 0.3s;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.06);
+
+  border: 1px solid #ecfdf5;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.pickup-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 6px;
+
+  background:
+  linear-gradient(
+    90deg,
+    #16a34a,
+    #4ade80
+  );
+}
+
+.pickup-card:hover {
+
+  transform: translateY(-8px);
+
+  box-shadow:
+  0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* ================= TOP ================= */
+
+.card-top {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 25px;
+}
+
+/* PROFILE */
+
+.profile-circle {
+
+  width: 75px;
+
+  height: 75px;
+
+  border-radius: 50%;
+
+  background:
+  linear-gradient(
+    135deg,
+    #dcfce7,
+    #bbf7d0
+  );
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 30px;
+
+  color: #16a34a;
+}
+
+.card-top h2 {
+
+  font-size: 24px;
+
+  color: #0f172a;
+
+  margin-bottom: 10px;
+}
+
+/* ACTIVE */
+
+.active-badge {
+
+  background: #dcfce7;
+
+  color: #15803d;
+
+  padding: 7px 14px;
+
+  border-radius: 30px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+/* ================= DETAILS ================= */
+
+.agent-details {
+
+  margin-bottom: 22px;
+}
+
+.agent-details p {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 15px;
+
+  color: #475569;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+.agent-details svg {
+
+  color: #16a34a;
+}
+
+/* ================= ADDRESS ================= */
+
+.address-box {
+
+  background: #f8fafc;
+
+  padding: 18px;
+
+  border-radius: 18px;
+}
+
+.address-box h4 {
+
+  margin-bottom: 10px;
+
+  color: #166534;
+}
+
+.address-box p {
+
+  color: #475569;
+
+  line-height: 1.7;
+}
+
+/* ================= EMPTY ================= */
+
+.empty-box {
+
+  background: white;
+
+  padding: 50px;
+
+  border-radius: 25px;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 18px;
+
+  box-shadow:
+  0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px) {
+
+  .pickup-page {
+
+    padding: 18px;
+  }
+
+  .pickup-hero {
+
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 25px;
+  }
+
+  .pickup-hero h1 {
+
+    font-size: 30px;
+  }
+
+  .hero-circle {
+
+    width: 90px;
+
+    height: 90px;
+
+    font-size: 35px;
+  }
+
+  .search-box {
+
+    width: 100%;
+  }
+
+  .pickup-topbar {
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+}
