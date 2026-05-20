@@ -197,7 +197,7 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import AdminWaste from "./Pages/AdminWaste";
 import AdminComplaint from "./Pages/AdminComplaint";
 import AdminAnnouncement from "./Pages/AdminAnnouncement";
-import PickupAgents from "./pages/PickupAgents";
+import PickupAgents from "./Pages/PickupAgents";
 // ================= AGENT =================
 import AgentLayout from "./Pages/AgentLayout";
 import AgentDashboard from "./Pages/AgentDashboard";
@@ -205,7 +205,7 @@ import AgentRequests from "./Pages/AgentRequests";
 import AgentProfile from "./Pages/AgentProfile";
 import AgentHistory from "./Pages/AgentHistory";
 import AgentComplaint from "./Pages/AgentComplaint";
-import EditAgent from "./pages/EditAgent";
+import EditAgent from "./Pages/EditAgent";
 
 function App() {
 
