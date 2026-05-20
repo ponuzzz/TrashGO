@@ -129,7 +129,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./adminDashboard.css";
+import "./admindashboard.css";
 
 import {
   ResponsiveContainer,

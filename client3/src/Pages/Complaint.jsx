@@ -172,7 +172,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Footer from "../components/Footer";
+import Footer from "../Components/Footer";
 
 import "./complaint.css";
 
