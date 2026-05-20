@@ -190,7 +190,7 @@ import MyRequest from "./Pages/MyRequest";
 import Complaint from "./Pages/Complaint";
 
 
-import protectedRoute from "./Components/ProtectedRoute";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 // ================= ADMIN =================
 import AdminLayout from "./Pages/AdminLayout";
