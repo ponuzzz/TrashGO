@@ -1241,7 +1241,7 @@
 // export default AdminWaste;
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./adminWaste.css";
+import "./adminwaste.css";
 
 import {
   FaRecycle,

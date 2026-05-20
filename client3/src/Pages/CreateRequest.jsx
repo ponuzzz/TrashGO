@@ -1091,7 +1091,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
+import Footer from "../Components/Footer";
 
 import "./createRequest.css";
 

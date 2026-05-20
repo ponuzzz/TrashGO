@@ -2050,7 +2050,7 @@ import { useEffect, useState } from "react";
 import { getMyWaste } from "../services/api";
 import Announcements from "../Pages/Announcements";
 import AnnouncementPopup from "../Pages/AnnouncementPopup";
-import Footer from "../components/Footer";
+import Footer from "../Components/Footer";
 import axios from "axios";
 
 import "./myRequest.css";
