@@ -182,14 +182,15 @@ import About from "./Pages/About";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 
-import ForgotPassword from "./Components/ForgotPassword";
+//  import ForgotPassword from "./Components/ForgotPassword";
 import ResetPassword from "./Components/ResetPassword";
 
-import CreateRequest from "./Pages/CreateRequest";
+// import CreateRequest from "./Pages/CreateRequest";
 import MyRequest from "./Pages/MyRequest";
 import Complaint from "./Pages/Complaint";
 
-import ProtectedRoute from "./Components/ProtectedRoute";
+// import ProtectedRoute from "./Components/protectedRoute";
+import protectedRoute from "./Components/protectedRoute";
 
 // ================= ADMIN =================
 import AdminLayout from "./Pages/AdminLayout";
@@ -206,6 +207,8 @@ import AgentProfile from "./Pages/AgentProfile";
 import AgentHistory from "./Pages/AgentHistory";
 import AgentComplaint from "./Pages/AgentComplaint";
 import EditAgent from "./Pages/EditAgent";
+ import forgotPassword from "./Components/forgotPassword";
+import createRequest from "./Pages/createRequest";
 
 function App() {
 
@@ -227,7 +230,7 @@ function App() {
 
         <Route path="/register" element={<Register />} />
 
-        <Route path="/forgot" element={<ForgotPassword />} />
+        <Route path="/forgot" element={<forgotPassword/>} />
 
         <Route
           path="/reset/:token"
@@ -238,7 +241,7 @@ function App() {
           path="/create"
           element={
             <ProtectedRoute>
-              <CreateRequest />
+              <CreateRequest/>
             </ProtectedRoute>
           }
         />
