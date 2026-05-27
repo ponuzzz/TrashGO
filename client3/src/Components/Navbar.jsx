@@ -134,7 +134,12 @@
 // }
 
 // export default Navbar;
+
+
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+
 import "./navbar.css";
 
 function Navbar() {
@@ -142,6 +147,8 @@ function Navbar() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const logout = () => {
     localStorage.clear();
@@ -154,7 +161,7 @@ function Navbar() {
 
       <div className="navbar-container">
 
-        {/* ================= LOGO ================= */}
+        {/* LOGO */}
 
         <Link to="/" className="brand-section">
 
@@ -175,9 +182,21 @@ function Navbar() {
           </h1>
 
         </Link>
-        {/* ================= NAV LINKS ================= */}
 
-        <div className="nav-links">
+        {/* MOBILE MENU BUTTON */}
+
+        <button
+          className="menu-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+
+          {menuOpen ? <FaTimes /> : <FaBars />}
+
+        </button>
+
+        {/* NAVBAR LINKS */}
+
+        <div className={`nav-links ${menuOpen ? "active" : ""}`}>
 
           <Link to="/" className="nav-item">
             Home
@@ -199,13 +218,8 @@ function Navbar() {
             Complaint
           </Link>
 
-        </div>
-
-        {/* ================= AUTH BUTTONS ================= */}
-
-        <div className="auth-section">
-
           {!token ? (
+
             <div className="auth-box">
 
               <Link to="/login" className="login-btn">
@@ -217,6 +231,7 @@ function Navbar() {
               </Link>
 
             </div>
+
           ) : (
 
             <button
@@ -235,6 +250,7 @@ function Navbar() {
     </nav>
 
   );
+
 }
 
 export default Navbar;
