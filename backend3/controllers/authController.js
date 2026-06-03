@@ -4,73 +4,9 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const transporter = require("../Config/mailer");
 
-// ✅ REGISTER
-// exports.register = async (req, res) => {
-//   try {
-//     // const { name, email, password, role } = req.body;
-//     const {
-
-//       name,
-//       email,
-//       password,
-//       role,
-
-//       address,
-//       district,
-//       phone,
-//       vehicleType,
-//       experience,
-//       idNumber,
-
-//     } = req.body;
 
 
-//     if (!name || !email || !password) {
-//       return res.status(400).json("All fields are required");
-//     }
 
-//     if (!/\S+@\S+\.\S+/.test(email)) {
-//       return res.status(400).json("Invalid email format");
-//     }
-
-//     if (password.length < 8) {
-//       return res.status(400).json("Password must be at least 8 characters");
-//     }
-
-//     const existingUser = await User.findOne({ email });
-//     if (existingUser) {
-//       return res.status(400).json("Email already registered");
-//     }
-
-//     const hashed = await bcrypt.hash(password, 10);
-
-//     await User.create({
-//       name,
-//       email,
-//       password: hashed,
-//       // role: role === "agent" ? "agent" : "user",
-//       role: role === "admin" ? "admin" : role === "agent" ? "agent" : "user",
-
-//       address,
-//       district,
-//       phone,
-//       vehicleType,
-//       experience,
-//       idNumber,
-
-//     });
-
-
-//     res.json({ message: "Registered Successfully ✅" });
-
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json("Server error ❌");
-//   }
-// }; // ✅ VERY IMPORTANT (THIS WAS MISSING)
-
-
-// ✅ REGISTER
 
 exports.register = async (req, res) => {
 
@@ -135,7 +71,7 @@ exports.register = async (req, res) => {
 
     }
 
-    // ===== EMAIL CHECK =====
+    // EMAIL CHECK 
 
     const existingUser =
     await User.findOne({ email });
@@ -148,12 +84,12 @@ exports.register = async (req, res) => {
 
     }
 
-    // ===== HASH PASSWORD =====
+    //  HASH PASSWORD 
 
     const hashed =
     await bcrypt.hash(password, 10);
 
-    // ===== CREATE USER =====
+    // CREATE USER 
 
     await User.create({
 
@@ -212,7 +148,8 @@ exports.forgotPassword = async (req, res) => {
 
     await user.save();
 
-    const link = `http://localhost:5174/reset/${token}`;
+    // const link = `http://localhost:5174/reset/${token}`;
+    const link = `https://trashgo-frontends.onrender.com/reset/${token}`;
 
     await transporter.sendMail({
       to: email,
