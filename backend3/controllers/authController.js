@@ -187,6 +187,7 @@ exports.resetPassword = async (req, res) => {
     user.resetTokenExpiry = null;
 
     await user.save();
+    //  const link = `https://trashgo-frontends.onrender.com/reset/${token}`;
 
     res.json("Password updated successfully ✅");
 

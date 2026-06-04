@@ -1255,6 +1255,8 @@ import {
   FaFilter,
 } from "react-icons/fa";
 
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
+
 function AdminWaste() {
 
   const [data, setData] = useState([]);
@@ -1294,7 +1296,8 @@ function AdminWaste() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:8000/api/admin/agents",
+        // "http://localhost:8000/api/admin/agents",
+         `${API_URL}/admin/agents`,
         {
           headers: {
             Authorization: `Bearer ${ token } `,
@@ -1332,7 +1335,8 @@ function AdminWaste() {
     try {
 
       const res = await axios.get(
-        "http://localhost:8000/api/waste",
+        // "http://localhost:8000/api/waste",
+          `${API_URL}/waste`,
         {
           headers: {
             Authorization: `Bearer ${ token } `,
@@ -1373,7 +1377,8 @@ function AdminWaste() {
 
       await axios.put(
 
-        `http://localhost:8000/api/waste/status/${id}`,
+        // `http://localhost:8000/api/waste/status/${id}`,
+        `${API_URL}/waste/status/${id}`,
 
 {
   status: "Approved",
@@ -1411,7 +1416,8 @@ const updateStatus = async (id, status) => {
   try {
 
     await axios.put(
-      `http://localhost:8000/api/waste/status/${id}`,
+      // `http://localhost:8000/api/waste/status/${id}`,
+        `${API_URL}/waste/status/${id}`,
       { status },
       {
         headers: {
@@ -1438,7 +1444,8 @@ const markAdminPaid = async (id) => {
   try {
 
     await axios.put(
-      `http://localhost:8000/api/waste/admin-pay/${id}`,
+      // `http://localhost:8000/api/waste/admin-pay/${id}`,
+      `${API_URL}/waste/admin-pay/${id}`,
       {},
       {
         headers: {
@@ -1678,7 +1685,8 @@ return (
                     <h4>🖼 Waste Image</h4>
 
                     <img
-                      src={`http://localhost:8000/uploads/${w.image}`}
+                      // src={`http://localhost:8000/uploads/${w.image}`}
+                        src={`${API_URL}/uploads/${w.image}`}
                       alt="waste"
                       className="waste-image"
                     />

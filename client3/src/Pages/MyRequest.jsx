@@ -2046,6 +2046,7 @@
 // }
 
 // export default MyRequest;
+
 import { useEffect, useState } from "react";
 import { getMyWaste } from "../services/api";
 import Announcements from "../Pages/Announcements";
@@ -2054,6 +2055,7 @@ import Footer from "../Components/Footer";
 import axios from "axios";
 
 import "./myRequest.css";
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 function MyRequest() {
 
@@ -2168,8 +2170,10 @@ function MyRequest() {
 
     try {
 
+      // await axios.delete(
+      //   `http://localhost:8000/api/waste/${id}`,
       await axios.delete(
-        `http://localhost:8000/api/waste/${id}`,
+        `${API_URL}/waste/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -2208,8 +2212,10 @@ function MyRequest() {
 
     try {
 
+      // const order = await axios.post(
+      //   `http://localhost:8000/api/waste/create-order/${id}`,
       const order = await axios.post(
-        `http://localhost:8000/api/waste/create-order/${id}`,
+        `${API_URL}/waste/create-order/${id}`,
         {},
         {
           headers: {
@@ -2234,8 +2240,10 @@ function MyRequest() {
 
         handler: async function (response) {
 
+          // await axios.post(
+          // "http://localhost:8000/api/waste/verify-payment",
           await axios.post(
-            "http://localhost:8000/api/waste/verify-payment",
+            `${API_URL}/waste/verify-payment`,
             {
               wasteId: id,
               ...response,

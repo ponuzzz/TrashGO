@@ -6,6 +6,7 @@ import {
 import axios from "axios";
 
 import "./agentComplaint.css";
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 function AgentComplaint() {
 
@@ -29,7 +30,8 @@ function AgentComplaint() {
       const res =
         await axios.get(
 
-          "http://localhost:8000/api/complaints/my",
+          // "http://localhost:8000/api/complaints/my",
+            `${API_URL}/complaints/my`,
 
           {
             headers: {
@@ -68,7 +70,8 @@ function AgentComplaint() {
 
         await axios.put(
 
-          `http://localhost:8000/api/complaints/${editId}`,
+          // `http://localhost:8000/api/complaints/${editId}`,
+           `${API_URL}/complaints/${editId}`,
 
           {
             message: msg
@@ -89,7 +92,8 @@ function AgentComplaint() {
 
         await axios.post(
 
-          "http://localhost:8000/api/complaints",
+          // "http://localhost:8000/api/complaints",
+            `${API_URL}/complaints`,
 
           {
             message: msg
@@ -127,7 +131,8 @@ function AgentComplaint() {
 
       await axios.delete(
 
-        `http://localhost:8000/api/complaints/user/${id}`,
+        // `http://localhost:8000/api/complaints/user/${id}`,
+          `${API_URL}/complaints/user/${id}`,
         {
           headers: {
             Authorization:

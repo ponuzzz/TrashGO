@@ -289,6 +289,8 @@ const razorpay = require("../Config/razorpay");
 const transporter = require("../Config/mailer");
 const crypto = require("crypto");
 
+
+
 const generateId = () => "WR" + Date.now();
 exports.createWaste = async (req, res) => {
 
@@ -683,3 +685,4 @@ exports.markCollected = async (req, res) => {
   }
 
 };
+

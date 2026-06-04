@@ -22,7 +22,7 @@ import {
 } from "recharts";
 
 import "./agentDashboard.css";
-
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 function AgentDashboard() {
 
   const [requests, setRequests] = useState([]);
@@ -42,7 +42,8 @@ function AgentDashboard() {
 
       const res = await axios.get(
 
-        "http://localhost:8000/api/agent/work",
+        // "http://localhost:8000/api/agent/work",
+        `${API_URL}/agent/work`,
 
         {
           headers: {

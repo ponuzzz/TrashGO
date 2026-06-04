@@ -1,5 +1,5 @@
-// const BASE_URL = "http://localhost:8000/api";
-const BASE_URL = "https://trashgo-backend-zow6.onrender.com/api";
+  // const BASE_URL = "http://localhost:8000/api";
+ const BASE_URL = "https://trashgo-backend-zow6.onrender.com/api";
 export const registerUser = async (data) => {
   const res = await fetch(`${BASE_URL}/auth/register`, {
     method: "POST",
@@ -44,7 +44,7 @@ export const createWaste = async (formData, token) => {
 };
 
 export const getMyWaste = async (token) => {
-  // const res = await fetch("http://localhost:8000/api/waste/my", {
+  //  const res = await fetch("http://localhost:8000/api/waste/my", {
   const res = await fetch(`${BASE_URL}/waste/my`, {
     headers: {
       Authorization: `Bearer ${token}`, // ✅ MUST
@@ -65,26 +65,27 @@ export const getAnnouncements = async (token) => {
 
 export const getAllAgents = async () => {
 
-  // const response = await fetch(
+  //  const response = await fetch(
 
-  //   "http://localhost:8000/api/agent/all"
+  //    "http://localhost:8000/api/agent/all"
 
-  // );
+  //  );
   const response = await fetch(
-  `${BASE_URL}/agent/all`
-);
+   `${BASE_URL}/agent/all`
+ );
 
   return response.json();
 
 };
 export const getPickupAgents = async () => {
 
-  // const response = await fetch(
-  //   "http://localhost:8000/api/agent/pickup-agents"
+  //  const response = await fetch(
+  //    "http://localhost:8000/api/agent/pickup-agents"
   // );
-  const response = await fetch(
-  `${BASE_URL}/agent/pickup-agents`
-);
+
+   const response = await fetch(
+   `${BASE_URL}/agent/pickup-agents`
+ );
 
   return response.json();
 

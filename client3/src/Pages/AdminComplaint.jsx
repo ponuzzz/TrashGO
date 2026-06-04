@@ -125,6 +125,8 @@
 // }
 
 // export default AdminComplaint;
+
+
 import {
   useEffect,
   useState
@@ -133,6 +135,7 @@ import {
 import axios from "axios";
 
 import "./adminComplaint.css";
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 function AdminComplaint() {
 
@@ -153,7 +156,8 @@ function AdminComplaint() {
       const res =
       await axios.get(
 
-        "http://localhost:8000/api/complaints",
+        // "http://localhost:8000/api/complaints",
+          `${API_URL}/complaints`,
 
         {
           headers: {
@@ -189,7 +193,8 @@ function AdminComplaint() {
 
       await axios.put(
 
-        `http://localhost:8000/api/complaints/reply/${id}`,
+        // `http://localhost:8000/api/complaints/reply/${id}`,
+          `${API_URL}/complaints/reply/${id}`,
 
         { reply },
 
@@ -221,7 +226,8 @@ function AdminComplaint() {
 
       await axios.put(
 
-        `http://localhost:8000/api/complaints/reply/${id}`,
+        // `http://localhost:8000/api/complaints/reply/${id}`,
+          `${API_URL}/complaints/reply/${id}`,
 
         { reply: "" },
 
@@ -253,7 +259,8 @@ function AdminComplaint() {
 
       await axios.delete(
 
-        `http://localhost:8000/api/complaints/${id}`,
+        // `http://localhost:8000/api/complaints/${id}`,
+          `${API_URL}/complaints/${id}`,
 
         {
           headers: {

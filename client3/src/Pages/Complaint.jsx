@@ -175,6 +175,7 @@ import axios from "axios";
 import Footer from "../Components/Footer";
 
 import "./complaint.css";
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 function Complaint() {
 
@@ -188,7 +189,8 @@ function Complaint() {
   const fetchData = async () => {
 
     const res = await axios.get(
-      "http://localhost:8000/api/complaints/my",
+      // "http://localhost:8000/api/complaints/my",
+      `${API_URL}/complaints/my`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -203,63 +205,7 @@ function Complaint() {
     fetchData();
   }, []);
 
-  // // SUBMIT
-  // const submit = async () => {
 
-  //   if (!msg) return alert("Enter message");
-
-  //   if (editId) {
-
-  //     await axios.put(
-  //       `http://localhost:8000/api/complaints/${editId}`,
-  //       { message: msg },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-
-  //     alert("✏️ Updated successfully");
-
-  //     setEditId(null);
-
-  //   } else {
-
-  //     await axios.post(
-  //       "http://localhost:8000/api/complaints",
-  //       { message: msg },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-
-  //     alert("✅ Complaint sent");
-  //   }
-
-  //   setMsg("");
-
-  //   fetchData();
-  // };
-
-  // // DELETE
-  // const deleteComplaint = async (id) => {
-
-  //   await axios.delete(
-  //     `http://localhost:8000/api/complaints/${id}`,
-  //     {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     }
-  //   );
-
-  //   alert("❌ Deleted");
-
-  //   fetchData();
-  // };
 
   const submit = async () => {
     if (!msg) return alert("Enter message");
@@ -268,7 +214,8 @@ function Complaint() {
       // 🟡 EDIT MODE
       if (editId) {
         await axios.put(
-          `http://localhost:8000/api/complaints/${editId}`,
+          // `http://localhost:8000/api/complaints/${editId}`,
+          `${API_URL}/complaints/${editId}`,
           { message: msg },
           {
             headers: {
@@ -284,7 +231,8 @@ function Complaint() {
       // 🟢 CREATE MODE
       else {
         await axios.post(
-          "http://localhost:8000/api/complaints",
+          // "http://localhost:8000/api/complaints",
+          `${API_URL}/complaints`,
           { message: msg },
           {
             headers: {
@@ -307,7 +255,8 @@ function Complaint() {
   const deleteComplaint = async (id) => {
   try {
     await axios.delete(
-      `http://localhost:8000/api/complaints/user/${id}`,
+      // `http://localhost:8000/api/complaints/user/${id}`,
+      `${API_URL}/complaints/user/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

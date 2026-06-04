@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 function EditAgent() {
 
   const [form, setForm] = useState({
@@ -35,8 +35,12 @@ function EditAgent() {
 
     try {
 
+      // await axios.put(
+      //   `http://localhost:8000/api/agent/${form._id}`,
+      //   form
+      // );
       await axios.put(
-        `http://localhost:8000/api/agent/${form._id}`,
+        `${API_URL}/agent/${form._id}`,
         form
       );
 

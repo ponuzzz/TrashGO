@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 function Announcements() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/announcements")
+      // .get("http://localhost:8000/api/announcements")
+       .get(`${API_URL}/announcements`)
       .then((res) => setData(res.data))
       .catch(() => setData([]));
   }, []);

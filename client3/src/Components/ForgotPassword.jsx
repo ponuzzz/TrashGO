@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./auth.css";
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -15,13 +16,16 @@ const ForgotPassword = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/api/auth/forgot", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      // const res = await fetch("http://localhost:8000/api/auth/forgot", {
+      const res = await fetch(
+        `${API_URL}/auth/forgot`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
 
       const data = await res.json();
 

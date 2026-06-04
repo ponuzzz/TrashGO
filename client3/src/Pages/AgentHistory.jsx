@@ -16,6 +16,7 @@ import {
 } from "recharts";
 
 import "./agentHistory.css";
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 function AgentHistory() {
 
@@ -43,7 +44,8 @@ function AgentHistory() {
 
         const res = await axios.get(
 
-          "http://localhost:8000/api/agent/history",
+          // "http://localhost:8000/api/agent/history",
+           `${API_URL}/agent/history`,
 
           {
             headers: {

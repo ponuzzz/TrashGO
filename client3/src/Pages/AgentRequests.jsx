@@ -332,6 +332,7 @@ import {
 import axios from "axios";
 
 import "./agentRequests.css";
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 function AgentRequests() {
 
@@ -356,7 +357,8 @@ function AgentRequests() {
 
         const res = await axios.get(
 
-          "http://localhost:8000/api/agent/work",
+          // "http://localhost:8000/api/agent/work",
+            `${API_URL}/agent/work`,
 
           {
             headers: {
@@ -389,7 +391,8 @@ function AgentRequests() {
 
         await axios.put(
 
-          `http://localhost:8000/api/waste/collect/${id}`,
+          // `http://localhost:8000/api/waste/collect/${id}`,
+          `${API_URL}/waste/collect/${id}`,
 
           {},
 

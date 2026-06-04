@@ -130,6 +130,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./admindashboard.css";
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 import {
   ResponsiveContainer,
@@ -168,7 +169,8 @@ function AdminDashboard() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:8000/api/admin/dashboard",
+        // "http://localhost:8000/api/admin/dashboard",
+          `${API_URL}/admin/dashboard`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

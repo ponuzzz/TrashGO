@@ -84,7 +84,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./agentProfile.css";
 
-
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 
 const AgentProfile = () => {
@@ -126,7 +126,8 @@ const handleDelete = async (id) => {
   try {
 
    await axios.delete(
-  `http://localhost:8000/api/agent/${id}`
+  // `http://localhost:8000/api/agent/${id}`
+     `${API_URL}/agent/${id}`
 );
 
     alert("✅ Agent Deleted");
