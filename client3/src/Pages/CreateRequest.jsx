@@ -456,12 +456,12 @@
 
 // </div>
 
-          
+
 
 //           </div>
 //         </div>
 //       </div>
-    
+
 //   );
 // }
 
@@ -538,7 +538,7 @@
 
 //   // }, [form.wasteType, form.weight]);
 
- 
+
 
 //       try {
 
@@ -1095,6 +1095,8 @@ import Footer from "../Components/Footer";
 
 import "./createRequest.css";
 
+const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
+
 function CreateRequest() {
 
   const [form, setForm] = useState({
@@ -1128,62 +1130,39 @@ function CreateRequest() {
         return;
       }
 
-      // try {
-
-        // const res = await axios.get(
-          // `http://localhost:8000/api/waste/price/${form.wasteType}`
-        // );
-
-        // const rate = Number(res.data.pricePerKg);
-
-        // const weight = Number(form.weight);
-
-        // if (!weight || weight <= 0) {
-          // setPrice(0);
-        // } else {
-          // setPrice(rate * weight);
-        // }
-
-      // } catch (err) {
-
-        // console.log(
-          // "Price error:",
-          // err.response?.data || err.message
-        // );
-
-        // setPrice(0);
-
-      // }
       try {
 
-  const res = await axios.get(
-    `http://localhost:8000/api/waste/price/${form.wasteType}`
-  );
+        // const res = await axios.get(
+        //   `http://localhost:8000/api/waste/price/${form.wasteType}`
+        // );
+        await axios.get(
+          `${API_URL}/waste/price/${form.wasteType}`
+        );
 
-  const rate = Number(res.data.pricePerKg);
+        const rate = Number(res.data.pricePerKg);
 
-  const weight = Number(form.weight);
+        const weight = Number(form.weight);
 
-  if (!weight || weight <= 0) {
+        if (!weight || weight <= 0) {
 
-    setPrice(0);
+          setPrice(0);
 
-  } else {
+        } else {
 
-    const total = rate * weight;
+          const total = rate * weight;
 
-    setPrice(total);
-  }
+          setPrice(total);
+        }
 
-} catch (err) {
+      } catch (err) {
 
-  console.log(
-    "Price error:",
-    err.response?.data || err.message
-  );
+        console.log(
+          "Price error:",
+          err.response?.data || err.message
+        );
 
-  setPrice(0);
-}
+        setPrice(0);
+      }
     };
 
     fetchPrice();
@@ -1328,8 +1307,10 @@ function CreateRequest() {
 
         const parsed = JSON.parse(editData);
 
+        // await axios.put(
+        //   `http://localhost:8000/api/waste/${parsed._id}`,
         await axios.put(
-          `http://localhost:8000/api/waste/${parsed._id}`,
+          `${API_URL}/waste/${parsed._id}`,
           formData,
           {
             headers: {
@@ -1348,8 +1329,10 @@ function CreateRequest() {
       } else {
 
         // ✅ CREATE
+        // const res = await axios.post(
+        //   "http://localhost:8000/api/waste",
         const res = await axios.post(
-          "http://localhost:8000/api/waste",
+          `${API_URL}/waste`,
           formData,
           {
             headers: {
