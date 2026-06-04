@@ -1135,7 +1135,7 @@ function CreateRequest() {
         // const res = await axios.get(
         //   `http://localhost:8000/api/waste/price/${form.wasteType}`
         // );
-        await axios.get(
+        const res = await axios.get(
           `${API_URL}/waste/price/${form.wasteType}`
         );
 
