@@ -1256,6 +1256,9 @@ import {
 } from "react-icons/fa";
 
 const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
+const SERVER_URL = "https://trashgo-backend-zow6.onrender.com";
+
+
 
 function AdminWaste() {
 
@@ -1686,7 +1689,7 @@ return (
 
                     <img
                       // src={`http://localhost:8000/uploads/${w.image}`}
-                        src={`${API_URL}/uploads/${w.image}`}
+                        src={`${SERVER_URL}/uploads/${w.image}`}
                       alt="waste"
                       className="waste-image"
                     />
