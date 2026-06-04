@@ -1686,6 +1686,7 @@ return (
                   <div className="waste-image-box">
 
                     <h4>🖼 Waste Image</h4>
+                     <p>{w.image}</p>
 
                     <img
                       // src={`http://localhost:8000/uploads/${w.image}`}
