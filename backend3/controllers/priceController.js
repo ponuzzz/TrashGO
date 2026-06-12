@@ -1,7 +1,5 @@
 const Price = require("../models/price");
 
-
-
 // 🔴 ADMIN: Add / Update price
 exports.setPrice = async (req, res) => {
   try {

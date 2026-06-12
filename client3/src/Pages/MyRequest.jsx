@@ -2052,10 +2052,12 @@ import { getMyWaste } from "../services/api";
 import Announcements from "../Pages/Announcements";
 import AnnouncementPopup from "../Pages/AnnouncementPopup";
 import Footer from "../Components/Footer";
-import axios from "axios";
+import API from "../api/axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./myRequest.css";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
+
 
 function MyRequest() {
 
@@ -2164,34 +2166,32 @@ function MyRequest() {
   // ✅ DELETE
   const handleDelete = async (id) => {
 
-    const token = localStorage.getItem("token");
+  if (!window.confirm("Delete this request?"))
+    return;
 
-    if (!window.confirm("Delete this request?")) return;
+  try {
 
-    try {
+    await API.delete(
+      `/waste/${id}`
+    );
 
-      // await axios.delete(
-      //   `http://localhost:8000/api/waste/${id}`,
-      await axios.delete(
-        `${API_URL}/waste/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+    toast.success(
+      "Deleted Successfully ✅"
+    );
 
-      alert("Deleted successfully");
-
+    setTimeout(() => {
       window.location.reload();
+    }, 1000);
 
-    } catch {
+  } catch {
 
-      alert("Delete failed");
+    toast.error(
+      "Delete Failed ❌"
+    );
 
-    }
+  }
 
-  };
+};
 
   // ✅ EDIT
   const handleEdit = (item) => {
@@ -2208,86 +2208,87 @@ function MyRequest() {
   // ✅ PAYMENT
   const handlePayment = async (id) => {
 
-    const token = localStorage.getItem("token");
+  try {
 
-    try {
-
-      // const order = await axios.post(
-      //   `http://localhost:8000/api/waste/create-order/${id}`,
-      const order = await axios.post(
-        `${API_URL}/waste/create-order/${id}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+    const order =
+      await API.post(
+        `/waste/create-order/${id}`
       );
 
-      const options = {
+    const options = {
 
-        key: import.meta.env.VITE_RAZORPAY_KEY,
+      key:
+        import.meta.env.VITE_RAZORPAY_KEY,
 
-        amount: order.data.amount,
+      amount:
+        order.data.amount,
 
-        currency: "INR",
+      currency: "INR",
 
-        order_id: order.data.id,
+      order_id:
+        order.data.id,
 
-        name: "Waste App",
+      name: "Waste App",
 
-        description: "Waste Pickup Payment",
+      description:
+        "Waste Pickup Payment",
 
-        handler: async function (response) {
+      handler:
+        async function (response) {
 
-          // await axios.post(
-          // "http://localhost:8000/api/waste/verify-payment",
-          await axios.post(
-            `${API_URL}/waste/verify-payment`,
+          await API.post(
+            "/waste/verify-payment",
             {
               wasteId: id,
               ...response,
-            },
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
             }
           );
 
-          alert("✅ Payment Successful");
+          toast.success(
+            "Payment Successful ✅"
+          );
 
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
 
         },
 
-        theme: {
-          color: "#27ae60",
-        },
+      theme: {
+        color: "#27ae60",
+      },
 
-      };
+    };
 
-      const rzp = new window.Razorpay(options);
-
-      rzp.open();
-
-    } catch (err) {
-
-      console.log(
-        "PAYMENT ERROR:",
-        err.response?.data || err.message
+    const rzp =
+      new window.Razorpay(
+        options
       );
 
-      alert(
-        err.response?.data || "Payment failed"
-      );
+    rzp.open();
 
-    }
+  } catch (err) {
 
-  };
+    console.log(
+      err.response?.data ||
+      err.message
+    );
 
+    toast.error(
+      err.response?.data ||
+      "Payment Failed ❌"
+    );
+
+  }
+
+};
   return (
-
+ <>
+    <ToastContainer
+      position="top-right"
+      autoClose={3000}
+      theme="colored"
+    />
     <div className="myrequest-container">
 
       {/* ANNOUNCEMENTS */}
@@ -2646,6 +2647,7 @@ function MyRequest() {
       <Footer />
 
     </div>
+    </>
 
   );
 

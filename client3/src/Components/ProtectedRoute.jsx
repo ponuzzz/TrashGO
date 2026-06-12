@@ -1,4 +1,5 @@
 import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function ProtectedRoute({ children }) {
 
@@ -6,7 +7,7 @@ function ProtectedRoute({ children }) {
 
   if (!token) {
 
-    alert("Please login first");
+    toast.error("Please login first 🔒");
 
     return <Navigate to="/login" />;
   }

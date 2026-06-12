@@ -1,36 +1,50 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
+import API from "../api/axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function AnnouncementPopup() {
   const [latest, setLatest] = useState(null);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    axios
-      // .get("http://localhost:8000/api/announcements")
-        .get(`${API_URL}/announcements`)
-      .then((res) => {
-        if (res.data.length > 0) {
-          const latestData = res.data[0]; // latest announcement
-          
-          // ✅ check localStorage (avoid showing again)
-          const seen = localStorage.getItem("seenAnnouncement");
+    const fetchAnnouncement = async () => {
+      try {
+        const res = await API.get("/announcements");
+
+        if (res.data && res.data.length > 0) {
+          const latestData = res.data[0];
+
+          const seen = localStorage.getItem(
+            "seenAnnouncement"
+          );
 
           if (seen !== latestData._id) {
             setLatest(latestData);
             setShow(true);
           }
         }
-      });
+      } catch (err) {
+        console.log(err);
+        toast.error("Failed to load announcement");
+      }
+    };
+
+    fetchAnnouncement();
   }, []);
 
   const closePopup = () => {
     setShow(false);
-    localStorage.setItem("seenAnnouncement", latest._id);
+
+    if (latest?._id) {
+      localStorage.setItem(
+        "seenAnnouncement",
+        latest._id
+      );
+    }
   };
 
   if (!show || !latest) return null;
-
   return (
     <div className="popup-overlay">
       <div className="popup-box">

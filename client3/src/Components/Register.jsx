@@ -1,215 +1,11 @@
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { registerUser } from "../services/api";
-// import "./auth.css";
-
-// const Register = () => {
-//   const navigate = useNavigate();
-
-//   // const [form, setForm] = useState({
-//   // name: "",
-//   // email: "",
-//   // password: "",
-//   // role: "user",
-//   // });
-//   const [formData, setFormData] = useState({
-
-//     name: "",
-//     email: "",
-//     password: "",
-
-//     role: "user",
-
-//     // ===== AGENT DETAILS =====
-
-//     address: "",
-//     district: "",
-//     phone: "",
-//     vehicleType: "",
-//     experience: "",
-//     idNumber: "",
-
-//   });
-
-//   const [errors, setErrors] = useState({});
-//   const [serverError, setServerError] = useState("");
-
-//   const handleChange = (e) => {
-//     setForm({ ...form, [e.target.name]: e.target.value });
-//   };
-
-//   const validate = () => {
-//     let err = {};
-
-//     if (!form.name) err.name = "Name is required";
-
-//     if (!form.email) err.email = "Email is required";
-//     else if (!/\S+@\S+\.\S+/.test(form.email))
-//       err.email = "Enter valid email";
-
-//     if (!form.password) err.password = "Password required";
-//     else if (form.password.length < 8)
-//       err.password = "Minimum 8 characters";
-
-//     return err;
-//   };
-
-//   // const handleSubmit = async (e) => {
-//   //   e.preventDefault();
-
-//   //   const err = validate();
-//   //   setErrors(err);
-//   //   setServerError("");
-
-//   //   if (Object.keys(err).length > 0) return;
-
-//   //   try {
-//   //     const res = await registerUser(form);
-//   //     const data = await res.json();
-
-//   //     if (!res.ok) {
-//   //       setServerError(data); // ✅ SHOW BACKEND ERROR
-//   //       return;
-//   //     }
-
-//   //     alert("Registered Successfully ✅");
-//   //     navigate("/");
-
-//   //   } catch (error) {
-//   //     setServerError("Cannot connect to server ❌");
-//   //   }
-//   // };
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     const err = validate();
-//     setErrors(err);
-//     setServerError("");
-
-//     if (Object.keys(err).length > 0) return;
-
-//     try {
-//       await registerUser(form); // ✅ no res.json()
-
-//       alert("Registered Successfully ✅");
-//       navigate("/");
-
-//     } catch (error) {
-//       setServerError(error.message); // 🔥 show real error
-//     }
-//   };
-
-
-//   return (
-//     <div className="auth-bg">
-//       <div className="auth-card">
-
-//         <h2 className="title">♻️ Waste Management</h2>
-//         <p className="subtitle">Create your account</p>
-
-//         <form onSubmit={handleSubmit}>
-
-//           <input name="name" placeholder="Full Name"
-//             onChange={handleChange} className="input" />
-//           {errors.name && <p className="error">{errors.name}</p>}
-
-//           <input name="email" placeholder="Email"
-//             onChange={handleChange} className="input" />
-//           {errors.email && <p className="error">{errors.email}</p>}
-
-//           <input type="password" name="password"
-//             placeholder="Password"
-//             onChange={handleChange} className="input" />
-//           {errors.password && <p className="error">{errors.password}</p>}
-
-//           <select name="role"
-//             onChange={handleChange} className="input">
-//             <option value="user">User</option>
-//             <option value="agent">Agent</option>
-//           </select>
-//           {
-//             formData.role === "agent" && (
-
-//               <div className="agent-extra-fields">
-
-//                 <input
-//                   type="text"
-//                   name="address"
-//                   placeholder="Address"
-//                   onChange={handleChange}
-//                 />
-
-//                 <input
-//                   type="text"
-//                   name="district"
-//                   placeholder="District"
-//                   onChange={handleChange}
-//                 />
-
-//                 <input
-//                   type="text"
-//                   name="phone"
-//                   placeholder="Phone"
-//                   onChange={handleChange}
-//                 />
-
-//                 <input
-//                   type="text"
-//                   name="vehicleType"
-//                   placeholder="Vehicle Type"
-//                   onChange={handleChange}
-//                 />
-
-//                 <input
-//                   type="text"
-//                   name="experience"
-//                   placeholder="Experience"
-//                   onChange={handleChange}
-//                 />
-
-//                 <input
-//                   type="text"
-//                   name="idNumber"
-//                   placeholder="Government ID"
-//                   onChange={handleChange}
-//                 />
-
-//               </div>
-
-//             )
-//           }
-
-//           {/* Forgot Password */}
-//           <p className="forgot"
-//             onClick={() => navigate("/forgot")}>
-//             Forgot Password?
-//           </p>
-
-//           <button className="btn-main">Register</button>
-
-//           {/* SERVER ERROR */}
-//           {serverError && <p className="error">{serverError}</p>}
-
-//         </form>
-
-//         <p className="switch">
-//           Already have an account?
-//           <span onClick={() => navigate("/")}> Login</span>
-//         </p>
-
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Register;
-
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../services/api";
 import districts from "../data/districts";
 import "./auth.css";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
 
@@ -223,7 +19,7 @@ const Register = () => {
 
     role: "user",
 
-    // ===== AGENT DETAILS =====
+    // AGENT DETAILS 
 
     address: "",
     district: "",
@@ -235,7 +31,7 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState("");
 
-  // ================= HANDLE CHANGE =================
+  // HANDLE CHANGE 
 
   const handleChange = (e) => {
 
@@ -249,7 +45,7 @@ const Register = () => {
 
   };
 
-  // ================= VALIDATION =================
+  //  VALIDATION 
 
   const validate = () => {
 
@@ -291,7 +87,7 @@ const Register = () => {
     return err;
   };
 
-  // ================= SUBMIT =================
+  // SUBMIT 
 
   const handleSubmit = async (e) => {
 
@@ -309,20 +105,31 @@ const Register = () => {
 
       await registerUser(formData);
 
-      alert("Registered Successfully ✅");
+      
 
-      navigate("/login");
+      
+      toast.success("Registered Successfully ✅");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
 
     } catch (error) {
 
-      setServerError(error.message);
+      
+      toast.error(error.message || "Registration Failed");
 
     }
 
   };
 
   return (
-
+     <>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+        />
+   
     <div className="auth-bg">
 
       <div className="auth-card">
@@ -337,7 +144,7 @@ const Register = () => {
 
         <form onSubmit={handleSubmit}>
 
-          {/* NAME */}
+          
 
           <input
             type="text"
@@ -351,7 +158,7 @@ const Register = () => {
             <p className="error">{errors.name}</p>
           }
 
-          {/* EMAIL */}
+          
 
           <input
             type="email"
@@ -365,7 +172,7 @@ const Register = () => {
             <p className="error">{errors.email}</p>
           }
 
-          {/* PASSWORD */}
+          
 
           <input
             type="password"
@@ -379,7 +186,7 @@ const Register = () => {
             <p className="error">{errors.password}</p>
           }
 
-          {/* ROLE */}
+          
 
           <select
             name="role"
@@ -397,7 +204,7 @@ const Register = () => {
 
           </select>
 
-          {/* ===== AGENT FIELDS ===== */}
+        {/* agent */}
 
           {
             formData.role === "agent" && (
@@ -479,7 +286,7 @@ const Register = () => {
 
             )
           }
-          {/* FORGOT PASSWORD */}
+          
 
           <p
             className="forgot"
@@ -520,7 +327,7 @@ const Register = () => {
       </div>
 
     </div>
-
+</>
   );
 };
 

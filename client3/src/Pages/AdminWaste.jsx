@@ -1240,7 +1240,7 @@
 
 // export default AdminWaste;
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import "./adminwaste.css";
 
 import {
@@ -1255,8 +1255,8 @@ import {
   FaFilter,
 } from "react-icons/fa";
 
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
-const SERVER_URL = "https://trashgo-backend-zow6.onrender.com";
+import API from "../api/axios";
+import { toast } from "react-toastify";
 
 
 
@@ -1296,17 +1296,10 @@ function AdminWaste() {
 
     try {
 
-      const token = localStorage.getItem("token");
-
-      const res = await axios.get(
-        // "http://localhost:8000/api/admin/agents",
-         `${API_URL}/admin/agents`,
-        {
-          headers: {
-            Authorization: `Bearer ${ token } `,
-          },
-        }
-      );
+  
+    const res = await API.get(
+  "/admin/agents"
+);
 
       setAgents(res.data);
 
@@ -1333,19 +1326,13 @@ function AdminWaste() {
 
   const fetchData = async () => {
 
-    const token = localStorage.getItem("token");
+    
 
     try {
 
-      const res = await axios.get(
-        // "http://localhost:8000/api/waste",
-          `${API_URL}/waste`,
-        {
-          headers: {
-            Authorization: `Bearer ${ token } `,
-          },
-        }
-      );
+     const res = await API.get(
+  "/waste"
+);
 
       setData(res.data);
 
@@ -1362,43 +1349,37 @@ function AdminWaste() {
 
     try {
 
-      const token = localStorage.getItem("token");
+      
 
       const data = assignData[id];
 
       if (!data?.agentId) {
-        return alert("Select Agent");
+         toast.warning("Select Agent ⚠️");
+         return;
       }
 
       if (!data?.pickupDate) {
-        return alert("Select Pickup Date");
+      toast.warning("Select Pickup Date ⚠️");
+  return;
       }
 
       if (!data?.pickupTime) {
-        return alert("Select Pickup Time");
+        toast.warning("Select Pickup Time ⚠️");
+  return;
       }
 
-      await axios.put(
-
-        // `http://localhost:8000/api/waste/status/${id}`,
-        `${API_URL}/waste/status/${id}`,
-
-{
-  status: "Approved",
+    await API.put(
+  `/waste/status/${id}`,
+  {
+    status: "Approved",
     agentId: data.agentId,
-      pickupDate: data.pickupDate,
-        pickupTime: data.pickupTime,
-        },
+    pickupDate: data.pickupDate,
+    pickupTime: data.pickupTime,
+  }
+);
 
-{
-  headers: {
-    Authorization: `Bearer ${token}`,
-          },
-}
 
-      );
-
-alert("✅ Approved Successfully");
+toast.success("Approved Successfully ✅");
 
 fetchData();
 
@@ -1414,20 +1395,16 @@ fetchData();
 
 const updateStatus = async (id, status) => {
 
-  const token = localStorage.getItem("token");
+  
 
   try {
 
-    await axios.put(
-      // `http://localhost:8000/api/waste/status/${id}`,
-        `${API_URL}/waste/status/${id}`,
-      { status },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+   await API.put(
+  `/waste/status/${id}`,
+  { status }
+);
+
+toast.success("Status Updated ✅");
 
     fetchData();
 
@@ -1442,22 +1419,16 @@ const updateStatus = async (id, status) => {
 
 const markAdminPaid = async (id) => {
 
-  const token = localStorage.getItem("token");
+  
 
   try {
 
-    await axios.put(
-      // `http://localhost:8000/api/waste/admin-pay/${id}`,
-      `${API_URL}/waste/admin-pay/${id}`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+   await API.put(
+  `/waste/admin-pay/${id}`,
+  {}
+);
 
-    alert("✅ Payment Updated");
+toast.success("Payment Updated ✅");
 
     fetchData();
 

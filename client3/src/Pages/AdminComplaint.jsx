@@ -131,11 +131,12 @@ import {
   useEffect,
   useState
 } from "react";
+import API from "../api/axios";
+import { toast } from "react-toastify";
 
-import axios from "axios";
 
 import "./adminComplaint.css";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
+
 
 function AdminComplaint() {
 
@@ -145,33 +146,30 @@ function AdminComplaint() {
   const [replyMap, setReplyMap] =
     useState({});
 
-  const token =
-    localStorage.getItem("token");
+  
 
   // FETCH
+const fetchData = async () => {
 
-  const fetchData =
-    async () => {
+  try {
 
-      const res =
-      await axios.get(
+    const res = await API.get(
+      "/complaints"
+    );
 
-        // "http://localhost:8000/api/complaints",
-          `${API_URL}/complaints`,
+    setData(res.data);
 
-        {
-          headers: {
-            Authorization:
-            `Bearer ${token}`,
-          },
-        }
+  } catch (err) {
 
-      );
+    toast.error(
+      "Failed to load complaints ❌"
+    );
 
-      setData(res.data);
+  }
 
-    };
-
+};
+ 
+ 
   useEffect(() => {
 
     fetchData();
@@ -180,102 +178,104 @@ function AdminComplaint() {
 
   // SEND REPLY
 
-  const sendReply =
-    async (id) => {
+  const sendReply = async (id) => {
 
-      const reply =
-        replyMap[id];
+  const reply = replyMap[id];
 
-      if (!reply)
-        return alert(
-          "Enter reply"
-        );
+  if (!reply) {
+    toast.warning(
+      "Enter reply first ⚠️"
+    );
+    return;
+  }
 
-      await axios.put(
+  try {
 
-        // `http://localhost:8000/api/complaints/reply/${id}`,
-          `${API_URL}/complaints/reply/${id}`,
+    await API.put(
+      `/complaints/reply/${id}`,
+      { reply }
+    );
 
-        { reply },
+    toast.success(
+      "Reply sent ✅"
+    );
 
-        {
-          headers: {
-            Authorization:
-            `Bearer ${token}`,
-          },
-        }
+    fetchData();
 
-      );
+  } catch (err) {
 
-      alert("✅ Reply sent");
+    toast.error(
+      "Failed to send reply ❌"
+    );
 
-      fetchData();
+  }
 
-    };
+};
 
   // CLEAR REPLY
 
-  const clearReply =
-    async (id) => {
+  const clearReply = async (id) => {
 
-      if (
-        !window.confirm(
-          "Clear this reply?"
-        )
-      ) return;
+  if (
+    !window.confirm(
+      "Clear this reply?"
+    )
+  ) return;
 
-      await axios.put(
+  try {
 
-        // `http://localhost:8000/api/complaints/reply/${id}`,
-          `${API_URL}/complaints/reply/${id}`,
+    await API.put(
+      `/complaints/reply/${id}`,
+      { reply: "" }
+    );
 
-        { reply: "" },
+    toast.success(
+      "Reply cleared ❌"
+    );
 
-        {
-          headers: {
-            Authorization:
-            `Bearer ${token}`,
-          },
-        }
+    fetchData();
 
-      );
+  } catch (err) {
 
-      alert("❌ Reply cleared");
+    toast.error(
+      "Failed to clear reply ❌"
+    );
 
-      fetchData();
+  }
 
-    };
+};
 
   // DELETE
 
-  const deleteComplaint =
-    async (id) => {
+  const deleteComplaint = async (id) => {
 
-      if (
-        !window.confirm(
-          "Delete complaint?"
-        )
-      ) return;
+  if (
+    !window.confirm(
+      "Delete complaint?"
+    )
+  ) return;
 
-      await axios.delete(
+  try {
 
-        // `http://localhost:8000/api/complaints/${id}`,
-          `${API_URL}/complaints/${id}`,
+    await API.delete(
+      `/complaints/${id}`
+    );
 
-        {
-          headers: {
-            Authorization:
-            `Bearer ${token}`,
-          },
-        }
+    toast.success(
+      "Complaint deleted 🗑️"
+    );
 
-      );
+    fetchData();
 
-      alert("🗑 Deleted");
+  } catch (err) {
 
-      fetchData();
+    toast.error(
+      "Delete failed ❌"
+    );
 
-    };
+  }
+
+};
 
   // CARD UI
 

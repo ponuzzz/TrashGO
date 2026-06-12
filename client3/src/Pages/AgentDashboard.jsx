@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api/axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   FaRecycle,
@@ -22,47 +24,25 @@ import {
 } from "recharts";
 
 import "./agentDashboard.css";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
-function AgentDashboard() {
 
+function AgentDashboard() {
   const [requests, setRequests] = useState([]);
 
+  // FETCH DATA
+  const fetchRequests = async () => {
+    try {
+      const res = await API.get("/agent/work");
+      setRequests(res.data);
+    } catch (err) {
+      console.log(err);
+      toast.error("Failed to load dashboard data");
+    }
+  };
+
   useEffect(() => {
-
     fetchRequests();
-
   }, []);
 
-  const fetchRequests = async () => {
-
-    try {
-
-      const token =
-        localStorage.getItem("token");
-
-      const res = await axios.get(
-
-        // "http://localhost:8000/api/agent/work",
-        `${API_URL}/agent/work`,
-
-        {
-          headers: {
-            Authorization:
-              `Bearer ${token}`,
-          },
-        }
-
-      );
-
-      setRequests(res.data);
-
-    } catch (err) {
-
-      console.log(err);
-
-    }
-
-  };
 
   // ================= COUNTS =================
 

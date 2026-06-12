@@ -3,10 +3,11 @@ import {
   useState
 } from "react";
 
-import axios from "axios";
+import API from "../api/axios";
+import { toast } from "react-toastify";
 
 import "./agentComplaint.css";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
+
 
 function AgentComplaint() {
 
@@ -24,31 +25,29 @@ function AgentComplaint() {
 
   // FETCH
 
-  const fetchData =
-    async () => {
+  const fetchData = async () => {
 
-      const res =
-        await axios.get(
+  try {
 
-          // "http://localhost:8000/api/complaints/my",
-            `${API_URL}/complaints/my`,
+    const res = await API.get(
+      "/complaints/my"
+    );
 
-          {
-            headers: {
-              Authorization:
-                `Bearer ${token}`
-            }
-          }
+    setData(
+      res.data.filter(
+        (c) => c.role === "agent"
+      )
+    );
 
-        );
+  } catch (err) {
 
-      setData(
-        res.data.filter(
-          (c) => c.role === "agent"
-        )
-      );
+    toast.error(
+      "Failed to load complaints ❌"
+    );
 
-    };
+  }
+
+};
 
   useEffect(() => {
 
@@ -58,93 +57,87 @@ function AgentComplaint() {
 
   // SUBMIT
 
-  const submit =
-    async () => {
+  const submit = async () => {
 
-      if (!msg)
-        return alert(
-          "Enter complaint"
-        );
+  if (!msg) {
 
-      if (editId) {
+    toast.warning(
+      "Enter complaint ⚠️"
+    );
 
-        await axios.put(
+    return;
+  }
 
-          // `http://localhost:8000/api/complaints/${editId}`,
-           `${API_URL}/complaints/${editId}`,
+  try {
 
-          {
-            message: msg
-          },
+    if (editId) {
 
-          {
-            headers: {
-              Authorization:
-                `Bearer ${token}`
-            }
-          }
-
-        );
-
-        alert("Updated");
-
-      } else {
-
-        await axios.post(
-
-          // "http://localhost:8000/api/complaints",
-            `${API_URL}/complaints`,
-
-          {
-            message: msg
-          },
-
-          {
-            headers: {
-              Authorization:
-                `Bearer ${token}`
-            }
-          }
-
-        );
-
-        alert("Complaint Sent");
-
-      }
-
-      setMsg("");
-
-      setEditId(null);
-
-      fetchData();
-
-    };
-
-  // DELETE
-
-  const deleteComplaint =
-    async (id) => {
-
-
-
-      // `http://localhost:8000/api/complaints/${id}`,
-
-      await axios.delete(
-
-        // `http://localhost:8000/api/complaints/user/${id}`,
-          `${API_URL}/complaints/user/${id}`,
+      await API.put(
+        `/complaints/${editId}`,
         {
-          headers: {
-            Authorization:
-              `Bearer ${token}`
-          }
+          message: msg
         }
-
       );
 
-      fetchData();
+      toast.success(
+        "Complaint updated ✅"
+      );
 
-    };
+    } else {
+
+      await API.post(
+        "/complaints",
+        {
+          message: msg
+        }
+      );
+
+      toast.success(
+        "Complaint sent ✅"
+      );
+
+    }
+
+    setMsg("");
+    setEditId(null);
+
+    fetchData();
+
+  } catch (err) {
+
+    toast.error(
+      "Something went wrong ❌"
+    );
+
+  }
+
+};
+
+
+  // DELETE
+const deleteComplaint = async (id) => {
+
+  try {
+
+    await API.delete(
+      `/complaints/user/${id}`
+    );
+
+    toast.success(
+      "Complaint deleted 🗑️"
+    );
+
+    fetchData();
+
+  } catch (err) {
+
+    toast.error(
+      "Delete failed ❌"
+    );
+
+  }
+
+};
 
   return (
 

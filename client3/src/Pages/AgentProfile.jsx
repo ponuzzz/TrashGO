@@ -77,70 +77,61 @@
 // export default AgentProfile;
 
 
-
 import React, { useEffect, useState } from "react";
-import { getAllAgents } from "../services/api";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API from "../api/axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./agentProfile.css";
 
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
-
-
 const AgentProfile = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [agents, setAgents] = useState([]);
+
+  // FETCH AGENTS
+  const fetchAgents = async () => {
+    try {
+      const res = await API.get("/agent");
+      setAgents(res.data);
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to load agents");
+    }
+  };
 
   useEffect(() => {
     fetchAgents();
   }, []);
 
-  const fetchAgents = async () => {
-    try {
-      const data = await getAllAgents();
-      setAgents(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  
+  // EDIT
   const handleEdit = (agent) => {
+    localStorage.setItem(
+      "editAgent",
+      JSON.stringify(agent)
+    );
 
-  localStorage.setItem(
-    "editAgent",
-    JSON.stringify(agent)
-  );
+    navigate("/agent/edit-agent");
+  };
 
-  navigate("/agent/edit-agent");
-};
-
-const handleDelete = async (id) => {
-
-  const confirmDelete =
-    window.confirm(
+  // DELETE
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
       "Delete this agent?"
     );
 
-  if (!confirmDelete) return;
+    if (!confirmDelete) return;
 
-  try {
+    try {
+      await API.delete(`/agent/${id}`);
 
-   await axios.delete(
-  // `http://localhost:8000/api/agent/${id}`
-     `${API_URL}/agent/${id}`
-);
+      toast.success("Agent deleted successfully");
 
-    alert("✅ Agent Deleted");
-
-    fetchAgents();
-
-  } catch (error) {
-
-    console.log(error);
-
-    alert("❌ Delete Failed");
-  }
-};
+      fetchAgents();
+    } catch (error) {
+      console.log(error);
+      toast.error("Delete failed");
+    }
+  };
 
 
    

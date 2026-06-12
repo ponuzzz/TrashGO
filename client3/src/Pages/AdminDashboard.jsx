@@ -128,9 +128,10 @@
 
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import "./admindashboard.css";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
+import API from "../api/axios";
+import { toast } from "react-toastify";
 
 import {
   ResponsiveContainer,
@@ -165,24 +166,24 @@ function AdminDashboard() {
   }, []);
 
   const fetchDashboard = async () => {
-    try {
-      const token = localStorage.getItem("token");
+  try {
 
-      const res = await axios.get(
-        // "http://localhost:8000/api/admin/dashboard",
-          `${API_URL}/admin/dashboard`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+    const res = await API.get(
+      "/admin/dashboard"
+    );
 
-      setData(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    setData(res.data);
+
+  } catch (err) {
+
+    console.log(err);
+
+    toast.error(
+      "Failed to load dashboard ❌"
+    );
+
+  }
+};
 
   // PIE CHART DATA
   const pieData = [

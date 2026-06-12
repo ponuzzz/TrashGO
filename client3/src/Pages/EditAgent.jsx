@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
+
+import API from "../api/axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function EditAgent() {
 
   const [form, setForm] = useState({
@@ -35,29 +37,37 @@ function EditAgent() {
 
     try {
 
-      // await axios.put(
-      //   `http://localhost:8000/api/agent/${form._id}`,
-      //   form
-      // );
-      await axios.put(
-        `${API_URL}/agent/${form._id}`,
-        form
-      );
+      await API.put(
+  `/agent/${form._id}`,
+  form
+);
 
-      alert("✅ Agent Updated");
+      toast.success(
+      "Agent Updated Successfully ✅"
+    );
 
+    setTimeout(() => {
       window.location.href =
         "/agent-profile";
+    }, 1500);
 
-    } catch (error) {
+  } catch (error) {
 
-      console.log(error);
+    console.log(error);
 
-      alert("❌ Update Failed");
-    }
-  };
+    toast.error(
+      "Update Failed ❌"
+    );
+  }
+};
 
   return (
+    <>
+  <ToastContainer
+    position="top-right"
+    autoClose={3000}
+    theme="colored"
+  />
 
     <div style={{ padding: "30px" }}>
 
@@ -113,6 +123,7 @@ function EditAgent() {
       </button>
 
     </div>
+    </>
   );
 }
 

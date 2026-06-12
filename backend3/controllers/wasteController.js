@@ -522,7 +522,8 @@ exports.updateWaste = async (req, res) => {
 
     // 🔥 Image update (optional)
     if (req.file) {
-      waste.image = req.file.path;
+      // waste.image = req.file.path;
+       waste.image = req.file.filename;
     }
 
     await waste.save();

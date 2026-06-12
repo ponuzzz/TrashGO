@@ -4,10 +4,6 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const transporter = require("../Config/mailer");
 
-
-
-
-
 exports.register = async (req, res) => {
 
   try {
@@ -26,7 +22,7 @@ exports.register = async (req, res) => {
 
     } = req.body;
 
-    // ===== VALIDATION =====
+    
 
     if (!name || !email || !password) {
 
@@ -52,7 +48,7 @@ exports.register = async (req, res) => {
 
     }
 
-    // ===== AGENT VALIDATION =====
+    // AGENT VALIDATION 
 
     if (role === "agent") {
 
@@ -105,7 +101,7 @@ exports.register = async (req, res) => {
       ? "agent"
       : "user",
 
-      // ===== AGENT =====
+      
 
       address,
       district,
@@ -133,7 +129,7 @@ exports.register = async (req, res) => {
 
 };
 
-// ✅ FORGOT PASSWORD
+// FORGOT PASSWORD
 exports.forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;
@@ -165,7 +161,11 @@ exports.forgotPassword = async (req, res) => {
   }
 };
 
-// ✅ RESET PASSWORD
+ 
+
+
+
+
 exports.resetPassword = async (req, res) => {
   try {
     const { token } = req.params;
@@ -196,7 +196,7 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
-// ✅ LOGIN
+//  LOGIN
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;

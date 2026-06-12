@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./auth.css";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
+import API from "../api/axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -16,33 +18,32 @@ const ForgotPassword = () => {
     }
 
     try {
-      // const res = await fetch("http://localhost:8000/api/auth/forgot", {
-      const res = await fetch(
-        `${API_URL}/auth/forgot`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        });
 
-      const data = await res.json();
+  await API.post(
+    "/auth/forgot",
+    { email }
+  );
 
-      if (!res.ok) {
-        setError(data);
-        setMsg("");
-      } else {
-        setMsg("Reset link sent to your email ✅");
-        setError("");
-      }
+  // setMsg("Reset link sent to your email ✅");
+  toast.success("Reset link sent to your email");
+  setError("");
 
-    } catch {
-      setError("Server error ❌");
-    }
+} catch (err) {
+
+  setError(
+    err.response?.data ||
+    "Server error ❌"
+  );
+
+  setMsg("");
+}
   };
-
   return (
+      <>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+        />
     <div className="auth-bg">
       <div className="auth-card">
 
@@ -67,6 +68,7 @@ const ForgotPassword = () => {
 
       </div>
     </div>
+    </>
   );
 };
 

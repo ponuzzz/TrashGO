@@ -324,100 +324,44 @@
 
 // export default AgentRequests;
 
-import {
-  useEffect,
-  useState
-} from "react";
-
-import axios from "axios";
-
+import { useEffect, useState } from "react";
+import API from "../api/axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./agentRequests.css";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 function AgentRequests() {
-
-  const [data, setData] =
-    useState([]);
-
-  useEffect(() => {
-
-    fetchRequests();
-
-  }, []);
+  const [data, setData] = useState([]);
 
   // ================= FETCH REQUESTS =================
+  const fetchRequests = async () => {
+    try {
+      const res = await API.get("/agent/work");
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+      toast.error("Failed to load requests");
+    }
+  };
 
-  const fetchRequests =
-    async () => {
-
-      try {
-
-        const token =
-          localStorage.getItem("token");
-
-        const res = await axios.get(
-
-          // "http://localhost:8000/api/agent/work",
-            `${API_URL}/agent/work`,
-
-          {
-            headers: {
-              Authorization:
-                `Bearer ${token}`,
-            },
-          }
-
-        );
-
-        setData(res.data);
-
-      } catch (err) {
-
-        console.log(err);
-
-      }
-
-    };
+  useEffect(() => {
+    fetchRequests();
+  }, []);
 
   // ================= MARK COLLECTED =================
+  const markCollected = async (id) => {
+    try {
+      await API.put(`/waste/collect/${id}`);
 
-  const markCollected =
-    async (id) => {
+      toast.success("Waste Collected Successfully");
 
-      try {
+      fetchRequests();
+    } catch (err) {
+      console.log(err);
+      toast.error("Failed to update status");
+    }
+  };
 
-        const token =
-          localStorage.getItem("token");
-
-        await axios.put(
-
-          // `http://localhost:8000/api/waste/collect/${id}`,
-          `${API_URL}/waste/collect/${id}`,
-
-          {},
-
-          {
-            headers: {
-              Authorization:
-                `Bearer ${token}`,
-            },
-          }
-
-        );
-
-        alert(
-          "✅ Waste Collected Successfully"
-        );
-
-        fetchRequests();
-
-      } catch (err) {
-
-        console.log(err);
-
-      }
-
-    };
 
   return (
 

@@ -16,59 +16,28 @@ import {
 } from "recharts";
 
 import "./agentHistory.css";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 function AgentHistory() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [data, setData] =
-    useState([]);
-
-  const [loading, setLoading] =
-    useState(true);
+  // FETCH HISTORY
+  const fetchHistory = async () => {
+    try {
+      const res = await API.get("/agent/history");
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+      toast.error("Failed to load history");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-
     fetchHistory();
-
   }, []);
 
-  // ================= FETCH =================
-
-  const fetchHistory =
-    async () => {
-
-      try {
-
-        const token =
-          localStorage.getItem("token");
-
-        const res = await axios.get(
-
-          // "http://localhost:8000/api/agent/history",
-           `${API_URL}/agent/history`,
-
-          {
-            headers: {
-              Authorization:
-                `Bearer ${token}`,
-            },
-          }
-
-        );
-
-        setData(res.data);
-
-      } catch (err) {
-
-        console.log(err);
-
-      } finally {
-
-        setLoading(false);
-
-      }
-
-    };
 
   // ================= COUNTS =================
 

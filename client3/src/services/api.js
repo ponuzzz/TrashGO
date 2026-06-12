@@ -16,7 +16,7 @@ export const registerUser = async (data) => {
   return result;
 };
 
-// ✅ LOGIN
+//  LOGIN
 export const loginUser = async (data) => {
   const res = await fetch(`${BASE_URL}/auth/login`, {
     method: "POST",
@@ -47,7 +47,7 @@ export const getMyWaste = async (token) => {
   //  const res = await fetch("http://localhost:8000/api/waste/my", {
   const res = await fetch(`${BASE_URL}/waste/my`, {
     headers: {
-      Authorization: `Bearer ${token}`, // ✅ MUST
+      Authorization: `Bearer ${token}`, 
     },
   });
 

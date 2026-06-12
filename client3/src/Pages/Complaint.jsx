@@ -171,107 +171,79 @@
 
 
 import { useEffect, useState } from "react";
-import axios from "axios";
-import Footer from "../Components/Footer";
-
+import API from "../api/axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./complaint.css";
-const API_URL = "https://trashgo-backend-zow6.onrender.com/api";
 
 function Complaint() {
-
   const [msg, setMsg] = useState("");
   const [data, setData] = useState([]);
   const [editId, setEditId] = useState(null);
 
-  const token = localStorage.getItem("token");
-
-  // FETCH DATA
+  // FETCH COMPLAINTS
   const fetchData = async () => {
-
-    const res = await axios.get(
-      // "http://localhost:8000/api/complaints/my",
-      `${API_URL}/complaints/my`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    setData(res.data);
+    try {
+      const res = await API.get("/complaints/my");
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+      toast.error("Failed to fetch complaints");
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-
-
+  // SUBMIT (CREATE / EDIT)
   const submit = async () => {
-    if (!msg) return alert("Enter message");
+    if (!msg) {
+      toast.warning("Enter message");
+      return;
+    }
 
     try {
-      // 🟡 EDIT MODE
+      // EDIT MODE
       if (editId) {
-        await axios.put(
-          // `http://localhost:8000/api/complaints/${editId}`,
-          `${API_URL}/complaints/${editId}`,
-          { message: msg },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        await API.put(`/complaints/${editId}`, {
+          message: msg,
+        });
 
-        alert("✏️ Updated successfully");
+        toast.success("Complaint updated");
         setEditId(null);
       }
 
-      // 🟢 CREATE MODE
+      // CREATE MODE
       else {
-        await axios.post(
-          // "http://localhost:8000/api/complaints",
-          `${API_URL}/complaints`,
-          { message: msg },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        await API.post("/complaints", {
+          message: msg,
+        });
 
-        alert("✅ Complaint sent");
+        toast.success("Complaint sent successfully");
       }
-
 
       setMsg("");
       fetchData();
     } catch (error) {
       console.log(error);
-      alert("Something went wrong");
+      toast.error("Something went wrong");
     }
   };
+
+  // DELETE
   const deleteComplaint = async (id) => {
-  try {
-    await axios.delete(
-      // `http://localhost:8000/api/complaints/user/${id}`,
-      `${API_URL}/complaints/user/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    try {
+      await API.delete(`/complaints/user/${id}`);
 
-    alert("❌ Deleted");
-    fetchData();
+      toast.success("Deleted successfully");
 
-  } catch (error) {
-    console.log(error);
-    alert("Delete failed");
-  }
-};
+      fetchData();
+    } catch (error) {
+      console.log(error);
+      toast.error("Delete failed");
+    }
+  };
   
   return (
 
